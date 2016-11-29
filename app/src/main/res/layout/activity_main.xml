@@ -1,17 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.hasee.mymoviehouse.MainActivity">
+    tools:context=".app.MainActivity"
+    android:orientation="vertical">
 
-    <TextView
-        android:text="Hello World!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+
+    <RadioGroup
+        android:background="#f5f5f5"
+        android:id="@+id/rg_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:button="@null"
+            android:id="@+id/rb_home"
+            style="@style/MainButtonStyle"
+            android:drawableTop="@drawable/movie_button_selector"
+            android:text="电影"
+            android:layout_margin="8dp"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_type"
+            style="@style/MainButtonStyle"
+            android:drawableTop="@drawable/cinema_button_selector"
+            android:text="影院"
+            android:layout_margin="8dp"/>
+
+        <RadioButton
+            android:id="@+id/rb_community"
+            style="@style/MainButtonStyle"
+            android:drawableTop="@drawable/find_button_selector"
+            android:text="发现"
+            android:layout_margin="8dp"/>
+
+        <RadioButton
+            android:id="@+id/rb_cart"
+            style="@style/MainButtonStyle"
+            android:drawableTop="@drawable/my_button_selector"
+            android:text="我的"
+            android:layout_margin="8dp"/>
+    </RadioGroup>
+</LinearLayout>

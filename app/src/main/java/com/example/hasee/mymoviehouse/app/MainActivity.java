@@ -1,9 +1,11 @@
-package com.example.hasee.mymoviehouse;
+package com.example.hasee.mymoviehouse.app;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.hasee.mymoviehouse.R;
+
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
