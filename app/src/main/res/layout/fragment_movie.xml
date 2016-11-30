@@ -1,12 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="电影"
-        android:textSize="30sp"
-        android:layout_gravity="center"/>
-</RelativeLayout>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:orientation="horizontal"
+       android:background="#D53E37"
+       android:gravity="center_vertical"
+       >
+       <TextView
+           android:id="@+id/tv_city"
+           android:layout_width="wrap_content"
+           android:layout_height="30dp"
+           android:textSize="15sp"
+           android:text="北京"
+           android:layout_marginLeft="8dp"
+           android:textColor="@drawable/city_tv_selector"
+           android:drawableRight="@drawable/show_city01"
+
+            android:gravity="center_vertical"
+           />
+
+       <com.flyco.tablayout.SlidingTabLayout
+           tl:tl_indicator_margin_top="1dp"
+           tl:tl_indicator_margin_bottom="1dp"
+           android:layout_margin="30dp"
+           android:background="@drawable/tab_shape"
+           android:id="@+id/slidingtablayout"
+           android:layout_width="0dp"
+           android:layout_height="30dp"
+           android:layout_weight="1"
+           tl:tl_bar_color="#a5ff0000"
+           tl:tl_indicator_color="#ffffff"
+           tl:tl_indicator_corner_radius="5dp"
+           tl:tl_textSelectColor="#fd4444"
+           tl:tl_textUnselectColor="#ffffff"
+           tl:tl_indicator_style="BLOCK"
+           tl:tl_textsize="15sp"
+           tl:tl_indicator_width_equal_title="true"/>
+
+
+       <ImageButton
+           android:id="@+id/ib_search"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@drawable/search"
+           android:layout_marginRight="8dp"
+           />
+
+   </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
