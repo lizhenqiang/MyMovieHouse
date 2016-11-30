@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,10 +63,20 @@ public class SplashActivity extends Activity {
                 finish();
             }
         });
+       setAnimation();
 
-        handler.sendEmptyMessageDelayed(1, 1000);
+
+        handler.sendEmptyMessageDelayed(1, 1500);
 
     }
+
+    private void setAnimation() {
+        Animation animation = new AlphaAnimation(1,0);
+        animation.setFillAfter(true);
+        animation.setDuration(1500);
+        iv_splash.setAnimation(animation);
+    }
+
     class MyStringCallback extends StringCallback{
 
         @Override

@@ -27,7 +27,7 @@
 
         <RadioButton
             android:button="@null"
-            android:id="@+id/rb_home"
+            android:id="@+id/rb_movie"
             style="@style/MainButtonStyle"
             android:drawableTop="@drawable/movie_button_selector"
             android:text="电影"
@@ -35,21 +35,21 @@
             />
 
         <RadioButton
-            android:id="@+id/rb_type"
+            android:id="@+id/rb_cinema"
             style="@style/MainButtonStyle"
             android:drawableTop="@drawable/cinema_button_selector"
             android:text="影院"
             android:layout_margin="8dp"/>
 
         <RadioButton
-            android:id="@+id/rb_community"
+            android:id="@+id/rb_find"
             style="@style/MainButtonStyle"
             android:drawableTop="@drawable/find_button_selector"
             android:text="发现"
             android:layout_margin="8dp"/>
 
         <RadioButton
-            android:id="@+id/rb_cart"
+            android:id="@+id/rb_my"
             style="@style/MainButtonStyle"
             android:drawableTop="@drawable/my_button_selector"
             android:text="我的"
