@@ -30,11 +30,9 @@ public abstract  class Basefragment extends Fragment {
          loadingPage = new LoadingPage(mContext) {
             @Override
             protected String url() {
+
                 return getUrl();
             }
-
-
-
             @Override
             protected View getView() {
                 return initView();
@@ -44,6 +42,7 @@ public abstract  class Basefragment extends Fragment {
                 getProgressData(response);
             }
         };
+        loadingPage.getDataFromNet();
         return loadingPage;
     }
 
@@ -52,14 +51,16 @@ public abstract  class Basefragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        loadingPage.getDataFromNet();
-       initData();
+        initData();
+
+    }
+
+    protected  void initData(){
+
     }
 
     protected abstract String getUrl();
 
-    public void initData() {
-    }
 
 
 

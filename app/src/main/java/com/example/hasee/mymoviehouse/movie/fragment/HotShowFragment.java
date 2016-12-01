@@ -9,6 +9,7 @@ import android.widget.ListView;
 import com.example.hasee.mymoviehouse.R;
 import com.example.hasee.mymoviehouse.base.Basefragment;
 import com.example.hasee.mymoviehouse.movie.adapter.HotShowListViewAdapter;
+import com.example.hasee.mymoviehouse.movie.bean.ListViewBean;
 import com.example.hasee.mymoviehouse.movie.bean.ViewPagerBean;
 import com.example.hasee.mymoviehouse.utils.Contacts;
 import com.google.gson.Gson;
@@ -29,28 +30,27 @@ import okhttp3.Call;
  * Created by lzq on 2016/11/30.
  */
 public class HotShowFragment extends Basefragment {
+    private HotShowListViewAdapter adapter;
     private Banner hot_show_banner;
     private ListView hotshow_listview;
     private String viewpagerUrl = Contacts.HOST_SHOW_VIEWPAGER;
     private String listviewUrl = Contacts.HOST_SHOW_LISTVIEW;
     private List<ViewPagerBean.DataBean> dataBeens;
-    private List<String> listViewBeens = new ArrayList<>();
-     @Override
+    private List<ListViewBean.DataBean.MoviesBean> moviesBeens = new ArrayList<>();
+    private View headview;
+
+    @Override
     public View initView() {
         View view = View.inflate(mContext, R.layout.fragement_hot_show,null);
         hotshow_listview = (ListView) view.findViewById(R.id.hotshow_listview);
 
-        View headview = View.inflate(mContext,R.layout.item_hotshow_banner,null);
+         headview = View.inflate(mContext,R.layout.item_hotshow_banner,null);
         hot_show_banner = (Banner) headview.findViewById(R.id.hot_show_banner);
 
 
-        //以头的方式添加顶部轮播图
-        hotshow_listview.addHeaderView(headview);
 
-         for (int i=0;i<100;i++){
-             listViewBeens.add("aaaaaa"+i);
-         }
-        hotshow_listview.setAdapter(new HotShowListViewAdapter(mContext,listViewBeens));
+
+
         return view;
     }
 
@@ -60,16 +60,28 @@ public class HotShowFragment extends Basefragment {
     }
 
 
-    @Override
-    public void initData() {
 
-        getDataFromNet(viewpagerUrl);
+
+
+
+
+    @Override
+    protected void getProgressData(String response) {
+        ListViewBean listViewBean =  new Gson().fromJson(response,ListViewBean.class);
+        ListViewBean.DataBean dataBean =  listViewBean.getData();
+        moviesBeens = dataBean.getMovies();
+        Log.e("TAG", "moviesBeens"+moviesBeens.size());
+        hotshow_listview.addHeaderView(headview);
+        hotshow_listview.setAdapter(new HotShowListViewAdapter(mContext,moviesBeens));
 
 
     }
 
     @Override
-    protected void getProgressData(String response) {
+    protected void initData() {
+        super.initData();
+        getDataFromNet(viewpagerUrl);
+
 
     }
 
@@ -107,7 +119,6 @@ public class HotShowFragment extends Basefragment {
     }
 
     private void processData(String response) {
-        Log.e("TAG", "eeeeeee");
         Gson gson = new Gson();
         ViewPagerBean viewPagerBean = gson.fromJson(response,ViewPagerBean.class);
         dataBeens = viewPagerBean.getData();

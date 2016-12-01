@@ -1,12 +1,302 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/text"
+    android:layout_width="match_parent"
+    android:layout_height="240dp"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="20sp"
-        android:text="ssssssssss"/>
+        android:layout_height="130dp"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        >
+
+        <FrameLayout
+
+            android:id="@+id/fl_play"
+            android:layout_width="80dp"
+            android:layout_height="130dp">
+
+            <ImageView
+                android:id="@+id/film_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_empty_cute_girl_box" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/a5b" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_detail"
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/film_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="神奇动物在哪里"
+                    android:textSize="15sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+
+                    android:id="@+id/tv_3d"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3D"
+                    android:textColor="#f3f7f9"
+                    android:textStyle="bold"
+                    android:textSize="8sp"
+                    android:padding="4dp"
+                    android:background="@drawable/text_3d_shape"
+
+                    />
+                <TextView
+                    android:id="@+id/imax"
+
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IMAX"
+                    android:textColor="#8bb7ce"
+
+                    android:textStyle="bold"
+                    android:textSize="8sp"
+                    android:padding="4dp"
+                    android:background="@drawable/text_imax_shape"
+
+                    />
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/ll_score"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="观众"
+                        android:textSize="15sp"
+                        android:textColor="#999999"
+                        />
+                    <TextView
+                        android:layout_width="3dp"
+                        android:layout_height="match_parent"
+                        />
+                    <TextView
+                        android:id="@+id/film_score_audience"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="9.0"
+                        android:textColor="#ffba13"/>
+                    <TextView
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent" />
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="7dp"
+                        android:background="#999999"/>
+                    <TextView
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="专业"
+                        android:textSize="15sp"
+                        android:textColor="#999999"
+                        />
+                    <TextView
+                        android:id="@+id/film_score_profession"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:textColor="#ffba13"
+                        android:text="6.9"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_want_watch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone"
+
+                    >
+                    <TextView
+                        android:id="@+id/tv_want"
+                        android:textSize="15sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12345"
+                        android:textColor="#ffba13"/>
+                    <TextView
+                        android:textSize="15sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="人想看"
+
+                        android:textColor="#999999"/>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/tv_scm"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="神奇动物城，法师显超能"/>
+
+            <TextView
+                android:id="@+id/tv_showinfo"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="今天162家影院放映2030场"/>
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/tv_buy_tickte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/text_buy_button_shape"
+                android:text="购票"
+                android:textColor="#f68070" />
+            <TextView
+                android:id="@+id/tv_sell_tickte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/text_button_shape"
+                android:text="预售"
+                android:textColor="#54bbf5"
+
+
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#999999"
+            android:layout_marginLeft="85dp"
+            />
+        <LinearLayout
+            android:id="@+id/ll_zhuanti"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="专题"
+                android:textColor="#ffcb7f"
+                android:layout_marginLeft="45dp"
+                android:padding="3dp"
+                android:textSize="12sp"
+                android:background="@drawable/topic_shape"
+                />
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="麻瓜必备！神奇动物超全资料库"
+                />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#999999"
+            android:layout_marginLeft="85dp"
+
+            />
+        <LinearLayout
+            android:id="@+id/ll_zixun"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="资讯"
+                android:textSize="12sp"
+                android:textColor="#ffcb7f"
+                android:layout_marginLeft="45dp"
+                android:background="@drawable/topic_shape"
+                android:padding="3dp"
+                />
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="不完全菜单解读解开隐秘剧情"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </LinearLayout>

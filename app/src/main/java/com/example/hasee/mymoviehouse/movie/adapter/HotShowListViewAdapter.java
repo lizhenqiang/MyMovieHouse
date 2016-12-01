@@ -1,39 +1,48 @@
 package com.example.hasee.mymoviehouse.movie.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.hasee.mymoviehouse.R;
+import com.example.hasee.mymoviehouse.movie.bean.ListViewBean;
 
 import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by lzq on 2016/11/30.
  */
 public class HotShowListViewAdapter extends BaseAdapter {
-    private final List<String> listViewBeens;
+    private final List<ListViewBean.DataBean.MoviesBean> moviesBeens;
     private final Context mContext;
 
 
-
-    public HotShowListViewAdapter(Context mContext, List<String> listViewBeens) {
+    public HotShowListViewAdapter(Context mContext, List<ListViewBean.DataBean.MoviesBean> moviesBeens) {
         this.mContext = mContext;
-        this.listViewBeens = listViewBeens;
+        this.moviesBeens = moviesBeens;
     }
 
     @Override
     public int getCount() {
 
 
-       return listViewBeens==null?null:listViewBeens.size();
+        return moviesBeens == null ? null : moviesBeens.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return listViewBeens.get(position);
+
+        return moviesBeens == null ? null : moviesBeens.get(position);
     }
 
     @Override
@@ -43,24 +52,112 @@ public class HotShowListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.e("sss", "getView");
+
+
         ViewHolder holder;
-        if(convertView==null) {
+        if (convertView == null) {
 
-            convertView = View.inflate(mContext,R.layout.item_hotshow_listview,null);
-            holder = new ViewHolder();
-            convertView.setTag(holder);
+            Log.e("sss", "convertView");
+            convertView = View.inflate(mContext, R.layout.item_hotshow_listview, null);
+            holder = new ViewHolder(convertView);
 
-            holder.textView = (TextView) convertView.findViewById(R.id.text);
-        }else {
-            holder  = (ViewHolder) convertView.getTag();
+        } else {
+            holder = (ViewHolder) convertView.getTag();
         }
+
+
+        convertView.setTag(holder);
+        holder.filmTitle.setText(moviesBeens.get(position).getNm());
+
+        if (((moviesBeens.get(position).getSc() == 0.0))) {
+            holder.llWantWatch.setVisibility(View.VISIBLE);
+            holder.llScore.setVisibility(View.GONE);
+            holder.tvWant.setText(moviesBeens.get(position).getWish() + "");
+
+        } else {
+            holder.llWantWatch.setVisibility(View.GONE);
+            holder.llScore.setVisibility(View.VISIBLE);
+            holder.filmScoreAudience.setText(moviesBeens.get(position).getSc() + "");
+        }
+
+        Glide.with(mContext)
+                .load(moviesBeens.get(position).getImg())
+                .into(holder.filmImage);
+        holder.tvScm.setText(moviesBeens.get(position).getScm());
+        holder.tvShowinfo.setText(moviesBeens.get(position).getShowInfo());
+
+        if (moviesBeens.get(position).isValue3d()) {
+            holder.tv3d.setVisibility(View.VISIBLE);
+        } else {
+            holder.tv3d.setVisibility(View.GONE);
+        }
+        if (moviesBeens.get(position).isImax()) {
+            holder.imax.setVisibility(View.VISIBLE);
+        } else {
+            holder.imax.setVisibility(View.GONE);
+        }
+        if (position == 0) {
+            holder.llBottom.setVisibility(View.VISIBLE);
+        } else {
+            holder.llBottom.setVisibility(View.GONE);
+        }
+
+        if (moviesBeens.get(position).getPreSale() == 0) {
+            holder.tvBuyTickte.setVisibility(View.VISIBLE);
+            holder.tvSellTickte.setVisibility(View.GONE);
+
+        }else {
+            holder.tvBuyTickte.setVisibility(View.GONE);
+            holder.tvSellTickte.setVisibility(View.VISIBLE);
+        }
+
         return convertView;
 
     }
 
 
-    private class ViewHolder {
-        TextView textView;
+    static class ViewHolder {
+        @Bind(R.id.film_image)
+        ImageView filmImage;
+        @Bind(R.id.fl_play)
+        FrameLayout flPlay;
+        @Bind(R.id.film_title)
+        TextView filmTitle;
+        @Bind(R.id.tv_3d)
+        TextView tv3d;
+        @Bind(R.id.imax)
+        TextView imax;
+        @Bind(R.id.film_score_audience)
+        TextView filmScoreAudience;
+        @Bind(R.id.film_score_profession)
+        TextView filmScoreProfession;
+        @Bind(R.id.ll_score)
+        LinearLayout llScore;
+        @Bind(R.id.tv_want)
+        TextView tvWant;
+        @Bind(R.id.ll_want_watch)
+        LinearLayout llWantWatch;
+        @Bind(R.id.tv_scm)
+        TextView tvScm;
+        @Bind(R.id.tv_showinfo)
+        TextView tvShowinfo;
+        @Bind(R.id.ll_detail)
+        LinearLayout llDetail;
+        @Bind(R.id.tv_buy_tickte)
+        TextView tvBuyTickte;
+        @Bind(R.id.tv_sell_tickte)
+        TextView tvSellTickte;
+        @Bind(R.id.ll_zhuanti)
+        LinearLayout llZhuanti;
+        @Bind(R.id.ll_zixun)
+        LinearLayout llZixun;
+        @Bind(R.id.ll_bottom)
+        LinearLayout llBottom;
 
+        ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 }
+
