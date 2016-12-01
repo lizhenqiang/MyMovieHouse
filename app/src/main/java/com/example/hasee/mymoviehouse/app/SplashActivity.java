@@ -123,8 +123,8 @@ public class SplashActivity extends Activity {
                 .into(iv_splash);
 */
 
-
     }
+
 
     @Override
     protected void onDestroy() {

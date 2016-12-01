@@ -14,4 +14,14 @@ public class MyFragment extends Basefragment {
         View view = View.inflate(mContext, R.layout.fragment_my,null);
         return view;
     }
+
+    @Override
+    protected String getUrl() {
+        return null;
+    }
+
+    @Override
+    protected void getProgressData(String response) {
+
+    }
 }

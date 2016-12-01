@@ -14,4 +14,14 @@ public class FindMoviesFragment extends Basefragment {
         View view = View.inflate(mContext,R.layout.fragment_find_movies,null);
         return view;
     }
+
+    @Override
+    protected String getUrl() {
+        return null;
+    }
+
+    @Override
+    protected void getProgressData(String response) {
+
+    }
 }

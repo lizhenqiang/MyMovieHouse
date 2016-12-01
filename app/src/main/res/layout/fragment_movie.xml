@@ -26,14 +26,15 @@
            />
 
        <com.flyco.tablayout.SlidingTabLayout
-           tl:tl_indicator_margin_top="1dp"
-           tl:tl_indicator_margin_bottom="1dp"
+
            android:layout_margin="30dp"
            android:background="@drawable/tab_shape"
            android:id="@+id/slidingtablayout"
            android:layout_width="0dp"
            android:layout_height="30dp"
            android:layout_weight="1"
+           tl:tl_indicator_margin_top="1dp"
+           tl:tl_indicator_margin_bottom="1dp"
            tl:tl_bar_color="#a5ff0000"
            tl:tl_indicator_color="#ffffff"
            tl:tl_indicator_corner_radius="5dp"
@@ -50,6 +51,7 @@
            android:layout_height="wrap_content"
            android:background="@drawable/search"
            android:layout_marginRight="8dp"
+           android:visibility="invisible"
            />
 
    </LinearLayout>

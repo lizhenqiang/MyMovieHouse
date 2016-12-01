@@ -31,4 +31,5 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:design:25.0.1'
     compile project(':FlycoTabLayout_Lib')
+    compile 'com.youth.banner:banner:1.4.2'
 }

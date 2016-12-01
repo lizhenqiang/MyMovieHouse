@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.example.hasee.mymoviehouse.R;
 import com.example.hasee.mymoviehouse.base.Basefragment;
-import com.example.hasee.mymoviehouse.movie.adapter.MovieFragmentPagerAdapter;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;
@@ -32,7 +31,6 @@ public class MovieFragment extends Basefragment {
     @Bind(R.id.view_pager)
     ViewPager viewPager;
     private List<Fragment> fragmets;
-    private MovieFragmentPagerAdapter movieFragmentPagerAdapter;
     private String[] titles = new String[]{"热映", "待映","找片"};
 
     @Override
@@ -46,6 +44,11 @@ public class MovieFragment extends Basefragment {
     }
 
     @Override
+    protected String getUrl() {
+        return null;
+    }
+
+    @Override
     public void initData() {
 
         initFragments();
@@ -56,14 +59,21 @@ public class MovieFragment extends Basefragment {
 
     }
 
+    @Override
+    protected void getProgressData(String response) {
+
+    }
+
+
+
     private void initFragments() {
         fragmets = new ArrayList<>();
         FindMoviesFragment findMoviesFragment = new FindMoviesFragment();
         HotShowFragment hotShowFragment = new HotShowFragment();
         WaitShowFragment waitShowFragment = new WaitShowFragment();
-        fragmets.add(findMoviesFragment);
         fragmets.add(hotShowFragment);
         fragmets.add(waitShowFragment);
+        fragmets.add(findMoviesFragment);
     }
 
 

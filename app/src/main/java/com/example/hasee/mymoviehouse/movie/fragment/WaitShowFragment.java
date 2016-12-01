@@ -14,4 +14,14 @@ public class WaitShowFragment extends Basefragment {
         View view = View.inflate(mContext, R.layout.wait_show,null);
         return view;
     }
+
+    @Override
+    protected String getUrl() {
+        return null;
+    }
+
+    @Override
+    protected void getProgressData(String response) {
+
+    }
 }
