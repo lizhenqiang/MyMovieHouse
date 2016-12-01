@@ -3,27 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <ListView
-        android:id="@+id/hotshow_listview"
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:background="#D53E37"/>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/pull_refresh_list"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:numColumns="auto_fit"
+        android:columnWidth="100dp"
+        android:stretchMode="columnWidth"
+        android:gravity="fill"
+        ptr:ptrMode="both"
 
-    </ListView>
-    <ImageView
-        android:id="@+id/backgroud_logo01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
 
-        android:layout_centerInParent="true"
-        android:background="@drawable/backgroud_logo01"/>
-    <ImageView
-        android:id="@+id/backgroud_logo02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        />
 
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        android:background="@drawable/backgroud_logo02"/>
+
 
 </RelativeLayout>

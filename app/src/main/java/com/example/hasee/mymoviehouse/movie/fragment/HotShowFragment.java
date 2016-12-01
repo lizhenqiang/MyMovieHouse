@@ -15,6 +15,9 @@ import com.example.hasee.mymoviehouse.movie.bean.ListViewBean;
 import com.example.hasee.mymoviehouse.movie.bean.ViewPagerBean;
 import com.example.hasee.mymoviehouse.utils.Contacts;
 import com.google.gson.Gson;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.extras.SoundPullEventListener;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -41,13 +44,34 @@ public class HotShowFragment extends Basefragment {
     private List<ViewPagerBean.DataBean> dataBeens;
     private List<ListViewBean.DataBean.MoviesBean> moviesBeens = new ArrayList<>();
     private View headview;
+    private PullToRefreshListView pull_refresh_list;
 
     @Override
     public View initView() {
         View view = View.inflate(mContext, R.layout.fragement_hot_show,null);
-        hotshow_listview = (ListView) view.findViewById(R.id.hotshow_listview);
+        pull_refresh_list = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
+        hotshow_listview = pull_refresh_list.getRefreshableView();
 
-         headview = View.inflate(mContext,R.layout.item_hotshow_banner,null);
+        pull_refresh_list.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                //请求网络
+                getDataFromNet(viewpagerUrl);
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+              Toast.makeText(mContext, "没有更多数据", Toast.LENGTH_SHORT).show();
+            }
+        });
+        SoundPullEventListener<ListView> soundListener = new SoundPullEventListener<ListView>(mContext);
+        soundListener.addSoundEvent(PullToRefreshBase.State.PULL_TO_REFRESH, R.raw.pull_event);
+        soundListener.addSoundEvent(PullToRefreshBase.State.RESET, R.raw.reset_sound);
+        soundListener.addSoundEvent(PullToRefreshBase.State.REFRESHING, R.raw.refreshing_sound);
+        pull_refresh_list.setOnPullEventListener(soundListener);
+
+
+        headview = View.inflate(mContext,R.layout.item_hotshow_banner,null);
         hot_show_banner = (Banner) headview.findViewById(R.id.hot_show_banner);
         textView = (TextView) headview.findViewById(R.id.hotshow_textview);
 
@@ -68,11 +92,6 @@ public class HotShowFragment extends Basefragment {
     }
 
 
-
-
-
-
-
     @Override
     protected void getProgressData(String response) {
         ListViewBean listViewBean =  new Gson().fromJson(response,ListViewBean.class);
@@ -81,10 +100,6 @@ public class HotShowFragment extends Basefragment {
         Log.e("TAG", "moviesBeens"+moviesBeens.size());
         hotshow_listview.addHeaderView(headview);
         hotshow_listview.setAdapter(new HotShowListViewAdapter(mContext,moviesBeens));
-
-
-
-
     }
 
     @Override
@@ -114,6 +129,7 @@ public class HotShowFragment extends Basefragment {
 
         @Override
         public void onResponse(String response, int id) {
+            pull_refresh_list.onRefreshComplete();
             switch (id) {
                 case 100:
 //                    Toast.makeText(GoodsListActivity.this, "http", Toast.LENGTH_SHORT).show();
