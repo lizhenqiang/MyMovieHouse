@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hasee.mymoviehouse.R;
 import com.example.hasee.mymoviehouse.base.Basefragment;
@@ -17,6 +19,7 @@ import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
+import com.youth.banner.listener.OnBannerClickListener;
 import com.youth.banner.loader.ImageLoader;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -30,7 +33,7 @@ import okhttp3.Call;
  * Created by lzq on 2016/11/30.
  */
 public class HotShowFragment extends Basefragment {
-    private HotShowListViewAdapter adapter;
+    private TextView textView;
     private Banner hot_show_banner;
     private ListView hotshow_listview;
     private String viewpagerUrl = Contacts.HOST_SHOW_VIEWPAGER;
@@ -46,9 +49,14 @@ public class HotShowFragment extends Basefragment {
 
          headview = View.inflate(mContext,R.layout.item_hotshow_banner,null);
         hot_show_banner = (Banner) headview.findViewById(R.id.hot_show_banner);
+        textView = (TextView) headview.findViewById(R.id.hotshow_textview);
 
-
-
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "搜索", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         return view;
@@ -73,6 +81,8 @@ public class HotShowFragment extends Basefragment {
         Log.e("TAG", "moviesBeens"+moviesBeens.size());
         hotshow_listview.addHeaderView(headview);
         hotshow_listview.setAdapter(new HotShowListViewAdapter(mContext,moviesBeens));
+
+
 
 
     }
@@ -148,7 +158,13 @@ public class HotShowFragment extends Basefragment {
         hot_show_banner.setDelayTime(1500);
         //设置指示器位置（当banner模式中有指示器时）
         hot_show_banner.setIndicatorGravity(BannerConfig.RIGHT);
-        //banner设置方法全部调用完毕时最后调用
+        //banner设置方法全部调用完毕时最后调用、
+        hot_show_banner.setOnBannerClickListener(new OnBannerClickListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                Toast.makeText(mContext, "position = "+(position-1), Toast.LENGTH_SHORT).show();
+            }
+        });
         hot_show_banner.start();
 
 

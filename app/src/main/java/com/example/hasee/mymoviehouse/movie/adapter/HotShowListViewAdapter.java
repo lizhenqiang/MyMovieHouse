@@ -9,6 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hasee.mymoviehouse.R;
@@ -112,6 +113,15 @@ public class HotShowListViewAdapter extends BaseAdapter {
             holder.tvSellTickte.setVisibility(View.VISIBLE);
         }
 
+
+
+        holder.llZhuanti.setOnClickListener(new MyOnclickListener());
+        holder.llZixun.setOnClickListener(new MyOnclickListener());
+        holder.llDetail.setOnClickListener(new MyOnclickListener());
+        holder.tvBuyTickte.setOnClickListener(new MyOnclickListener());
+        holder.tvSellTickte.setOnClickListener(new MyOnclickListener());
+        holder.filmImage.setOnClickListener(new MyOnclickListener());
+
         return convertView;
 
     }
@@ -157,6 +167,34 @@ public class HotShowListViewAdapter extends BaseAdapter {
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
+        }
+    }
+
+    private class MyOnclickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.ll_zhuanti :
+                    Toast.makeText(mContext, "专题", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.ll_zixun :
+                    Toast.makeText(mContext, "资讯", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.ll_detail :
+                    Toast.makeText(mContext, "详情", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.tv_buy_tickte :
+                    Toast.makeText(mContext, "购票", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.tv_sell_tickte :
+                    Toast.makeText(mContext, "预售", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.film_image :
+                    Toast.makeText(mContext, "播放", Toast.LENGTH_SHORT).show();
+                    break;
+
+
+            }
         }
     }
 }
