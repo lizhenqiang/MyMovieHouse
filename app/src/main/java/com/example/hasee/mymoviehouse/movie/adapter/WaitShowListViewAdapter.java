@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hasee.mymoviehouse.R;
@@ -95,6 +96,10 @@ public class WaitShowListViewAdapter extends RecyclerView.Adapter<RecyclerView.V
             tvSellTickte = (TextView) itemView.findViewById(R.id.tv_sell_tickte);
 
 
+            filmImage.setOnClickListener(new MyOnclickListener());
+            llDetail.setOnClickListener(new MyOnclickListener());
+            tvWantWatch.setOnClickListener(new MyOnclickListener());
+            tvSellTickte.setOnClickListener(new MyOnclickListener());
         }
 
         @Override
@@ -105,10 +110,10 @@ public class WaitShowListViewAdapter extends RecyclerView.Adapter<RecyclerView.V
             if(comingBeen.getVer().contains("3D")) {
                 tv3d.setText("3D");
                 tv3d.setVisibility(View.VISIBLE);
-            }else if(comingBeen.getVer().contains("2D")) {
+            }/*else if(comingBeen.getVer().contains("2D")) {
                 tv3d.setText("2D");
                 tv3d.setVisibility(View.VISIBLE);
-            }else {
+            }*/else {
                 tv3d.setVisibility(View.GONE);
             }
 
@@ -155,6 +160,27 @@ public class WaitShowListViewAdapter extends RecyclerView.Adapter<RecyclerView.V
             }else {
                 tvWantWatch.setVisibility(View.GONE);
                 tvSellTickte.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    private class MyOnclickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case  R.id.film_image:
+            Toast.makeText(mContext, "播放", Toast.LENGTH_SHORT).show();
+                    break;
+                case  R.id.ll_detail:
+                    Toast.makeText(mContext, "详情", Toast.LENGTH_SHORT).show();
+                    break;
+
+                case  R.id.tv_want_watch:
+                    Toast.makeText(mContext, "想看", Toast.LENGTH_SHORT).show();
+                    break;
+                case  R.id.tv_sell_tickte:
+                    Toast.makeText(mContext, "预售", Toast.LENGTH_SHORT).show();
+                    break;
             }
         }
     }

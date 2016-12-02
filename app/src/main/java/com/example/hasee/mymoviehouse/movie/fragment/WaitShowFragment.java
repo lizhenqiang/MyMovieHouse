@@ -89,9 +89,6 @@ public class WaitShowFragment extends Basefragment {
 
         getScroll1FromNet(scrollView1Url);
 
-
-
-
     }
 
     private void getScroll1FromNet(String scrollView1Url) {

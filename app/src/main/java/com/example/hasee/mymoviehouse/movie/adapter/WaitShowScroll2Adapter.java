@@ -6,7 +6,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hasee.mymoviehouse.R;
@@ -50,6 +52,7 @@ public class WaitShowScroll2Adapter extends RecyclerView.Adapter<RecyclerView.Vi
         TextView tvName;
         TextView tvPeople;
         ImageView red_heart;
+        private LinearLayout ll_all;
 
         public ViewHolder(View itemView) {
             super(itemView, WaitShowScroll2Adapter.this.mContext);
@@ -64,10 +67,13 @@ public class WaitShowScroll2Adapter extends RecyclerView.Adapter<RecyclerView.Vi
             tvName = (TextView) itemView.findViewById(R.id.tv_name);
             tvPeople = (TextView) itemView.findViewById(R.id.tv_people);
             red_heart = (ImageView) itemView.findViewById(R.id.red_heart);
+            ll_all = (LinearLayout) itemView.findViewById(R.id.ll_all);
+
+
         }
 
         @Override
-        public void setData(ScrollViewBean2.DataBean.ComingBean comingBeen) {
+        public void setData(final ScrollViewBean2.DataBean.ComingBean comingBeen) {
 
             String data = comingBeen.getComingTitle();
             if(data.contains("年")) {
@@ -88,8 +94,25 @@ public class WaitShowScroll2Adapter extends RecyclerView.Adapter<RecyclerView.Vi
                     .load(url1+url2)
                     .into(ivMovie);
 
+            ll_all.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mContext, ""+comingBeen.getNm(), Toast.LENGTH_SHORT).show();
+                }
+            });
 
 
+        }
+    }
+
+    private class MyOnClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case  R.id.red_heart:
+
+                    break;
+            }
         }
     }
 }

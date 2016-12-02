@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hasee.mymoviehouse.R;
@@ -59,16 +60,23 @@ public class WaitShowScroll1Adapter extends RecyclerView.Adapter<RecyclerView.Vi
             tvName = (TextView) itemView.findViewById(R.id.tv_name);
 
             tvOrigin = (TextView) itemView.findViewById(R.id.tv_yugao);
+
         }
 
         @Override
-        public void setData(ScrollViewBean1.DataBean comingBeen) {
+        public void setData(final ScrollViewBean1.DataBean comingBeen) {
 
             tvName.setText(comingBeen.getMovieName());
             tvOrigin.setText(comingBeen.getOriginName());
             Glide.with(mContext)
                     .load(comingBeen.getImg())
                     .into(ivMovie);
+            ivMovie.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mContext, ""+comingBeen.getMovieName(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }
