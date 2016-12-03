@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="120dp"
+    android:layout_height="wrap_content"
+
+    android:id="@+id/ll_jiangxiang"
+
+    >
+    <TextView
+        android:textColor="#000000"
+        android:layout_gravity="center_horizontal"
+        android:lines="1"
+        android:id="@+id/tv_tatle"
+        android:padding="5dp"
+        android:gravity="center_horizontal"
+        android:text="欧洲电影奖"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/triangle"
+
+        />
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#44999999"
+            ></View>
+        <TextView
+            android:padding="5dp"
+            android:lines="1"
+            android:gravity="center_horizontal"
+            android:id="@+id/tv_date"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="12-10"
+            android:textSize="12sp"/>
+        <View
+            android:background="#44999999"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="1dp">
+
+        </View>
+    </LinearLayout>
+    <RelativeLayout
+
+
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_width="120dp"
+        android:layout_height="160dp">
+        <ImageView
+            android:layout_marginTop="1dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/iv_movie"
+            android:layout_width="120dp"
+            android:layout_height="160dp"
+            android:scaleType="fitXY"
+            />
+        <TextView
+            android:layout_alignParentRight="true"
+            android:lines="1"
+            android:id="@+id/tv_jiangxiang"
+            android:text="最佳影片"
+            android:textSize="10sp"
+            android:padding="2dp"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:background="@drawable/find_moviews_jiangxiang_shape"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:textColor="#000000"
+        android:gravity="center_horizontal"
+        android:id="@id/tv_name"
+        android:text="她"
+        android:textSize="15sp"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

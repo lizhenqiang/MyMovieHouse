@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import com.example.hasee.mymoviehouse.ui.LoadingPage;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by lzq on 2016/11/21.
  */
@@ -47,6 +49,12 @@ public abstract  class Basefragment extends Fragment {
     }
 
     protected abstract View initView();
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
